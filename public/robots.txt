@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://getmxp.xyz/sitemap.xml
+
+# Crawl Delay
+Crawl-delay: 1
+
+# Disallow admin and private paths (if any in future)
+Disallow: /admin/
+Disallow: /private/
+
