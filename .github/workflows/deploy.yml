@@ -1,7 +1,10 @@
-name: Deploy Website to CloudFront
+name: CI/CD Pipeline
 
 on:
   push:
+    branches:
+      - main
+  pull_request:
     branches:
       - main
   workflow_dispatch:
@@ -15,16 +18,14 @@ env:
   AWS_REGION: ${{ vars.AWS_REGION }}
 
 jobs:
-  deploy:
-    name: Build and Deploy to AWS
+  # Stage 1: Code Quality Checks
+  lint:
+    name: 🔍 Lint Code
     runs-on: ubuntu-latest
-    environment: main
     
     steps:
       - name: 📦 Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: 🔧 Setup Node.js
         uses: actions/setup-node@v4
@@ -35,11 +36,66 @@ jobs:
 
       - name: 📥 Install dependencies
         run: |
-          echo "Installing dependencies with yarn..."
+          echo "Installing dependencies..."
           yarn install --frozen-lockfile --prefer-offline
-          echo "✅ Dependencies installed successfully"
 
-      - name: 🔨 Build website
+      - name: 🔍 Run ESLint
+        run: |
+          echo "Running linter..."
+          yarn lint
+          echo "✅ Linting passed"
+
+  # Stage 2: Type Checking
+  type-check:
+    name: 📝 Type Check
+    runs-on: ubuntu-latest
+    needs: lint
+    
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
+      - name: 📥 Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          yarn install --frozen-lockfile --prefer-offline
+
+      - name: 📝 TypeScript type check
+        run: |
+          echo "Running TypeScript type check..."
+          yarn type-check
+          echo "✅ Type checking passed"
+
+  # Stage 3: Build
+  build:
+    name: 🔨 Build Website
+    runs-on: ubuntu-latest
+    needs: [lint, type-check]
+    
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'yarn'
+          cache-dependency-path: yarn.lock
+
+      - name: 📥 Install dependencies
+        run: |
+          echo "Installing dependencies..."
+          yarn install --frozen-lockfile --prefer-offline
+
+      - name: 🔨 Build production bundle
         run: |
           echo "Building production website..."
           yarn build
@@ -53,9 +109,39 @@ jobs:
             echo "❌ Error: dist directory not found after build"
             exit 1
           fi
-          echo "📁 Build output:"
-          ls -lah dist/ | head -20
+          
+          echo "📁 Build output summary:"
+          echo "Total files: $(find dist -type f | wc -l)"
+          echo "Total size: $(du -sh dist | cut -f1)"
+          echo ""
+          echo "📄 Key files:"
+          ls -lh dist/ | head -10
           echo "✅ Build verification passed"
+
+      - name: 📦 Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+
+  # Stage 4: Deploy (only on main branch)
+  deploy:
+    name: 🚀 Deploy to AWS
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    environment: main
+    
+    steps:
+      - name: 📦 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 📥 Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
 
       - name: 🔐 Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
@@ -64,9 +150,9 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
           role-session-name: GitHubActions-Deploy-Website
 
-      - name: ☁️ Upload assets to S3
+      - name: ☁️ Upload static assets to S3
         run: |
-          echo "Uploading static assets to S3..."
+          echo "Uploading static assets (JS, CSS, images) to S3..."
           aws s3 sync dist/ s3://${{ vars.S3_BUCKET_NAME }} \
             --delete \
             --cache-control "public, max-age=31536000, immutable" \
@@ -75,13 +161,14 @@ jobs:
             --exclude "*.xml" \
             --exclude "*.txt" \
             --exclude "service-worker.js" \
-            --exclude "manifest.json"
+            --exclude "manifest.json" \
+            --no-progress
           
           echo "✅ Static assets uploaded"
 
-      - name: 📄 Upload HTML and JSON files
+      - name: 📄 Upload HTML and metadata files
         run: |
-          echo "Uploading HTML and JSON files..."
+          echo "Uploading HTML and metadata files..."
           aws s3 sync dist/ s3://${{ vars.S3_BUCKET_NAME }} \
             --delete \
             --cache-control "public, max-age=0, must-revalidate" \
@@ -90,9 +177,10 @@ jobs:
             --include "*.xml" \
             --include "*.txt" \
             --include "service-worker.js" \
-            --include "manifest.json"
+            --include "manifest.json" \
+            --no-progress
           
-          echo "✅ HTML and JSON files uploaded"
+          echo "✅ HTML and metadata files uploaded"
 
       - name: 🗑️ Invalidate CloudFront cache
         run: |
@@ -104,13 +192,13 @@ jobs:
             --output text)
           
           echo "Invalidation ID: $INVALIDATION_ID"
-          echo "Waiting for invalidation to complete..."
+          echo "Waiting for invalidation to complete (this may take a few minutes)..."
           
           aws cloudfront wait invalidation-completed \
             --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} \
             --id $INVALIDATION_ID
           
-          echo "✅ CloudFront cache invalidated"
+          echo "✅ CloudFront cache invalidated successfully"
 
       - name: ✅ Deployment summary
         run: |
@@ -118,21 +206,24 @@ jobs:
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🌐 Website URL | https://${{ vars.DOMAIN_NAME }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📦 S3 Bucket | ${{ vars.S3_BUCKET_NAME }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| ☁️ CloudFront ID | ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📍 Region | ${{ vars.AWS_REGION }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔄 Commit | ${{ github.sha }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🌐 Website URL | [https://${{ vars.DOMAIN_NAME }}](https://${{ vars.DOMAIN_NAME }}) |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📦 S3 Bucket | \`${{ vars.S3_BUCKET_NAME }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| ☁️ CloudFront ID | \`${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📍 AWS Region | \`${{ vars.AWS_REGION }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 🔄 Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| 👤 Author | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| 📅 Deployed At | $(date -u +'%Y-%m-%d %H:%M:%S UTC') |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Website deployed successfully!"
-          echo "🌐 URL: https://${{ vars.DOMAIN_NAME }}"
+          echo "✅ Website deployed successfully to production!" >> $GITHUB_STEP_SUMMARY
+          
+          echo ""
+          echo "═══════════════════════════════════════"
+          echo "  🚀 DEPLOYMENT SUCCESSFUL"
+          echo "═══════════════════════════════════════"
+          echo ""
+          echo "🌐 Website: https://${{ vars.DOMAIN_NAME }}"
           echo "📦 S3 Bucket: ${{ vars.S3_BUCKET_NAME }}"
           echo "☁️  CloudFront: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
+          echo "📍 Region: ${{ vars.AWS_REGION }}"
           echo "🔄 Commit: ${{ github.sha }}"
-
-      - name: 🧹 Cleanup
-        if: always()
-        run: |
-          echo "Cleaning up temporary files..."
-          rm -rf node_modules dist
-          echo "✅ Cleanup completed"
+          echo ""

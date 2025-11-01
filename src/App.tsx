@@ -1,4 +1,3 @@
-import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Header } from '@/components/sections/header'
 import { Footer } from '@/components/sections/footer'
