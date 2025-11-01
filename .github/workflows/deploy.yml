@@ -20,105 +20,105 @@ env:
 jobs:
   # Stage 1: Code Quality Checks
   lint:
-    name: 🔍 Lint Code
+    name: Lint Code
     runs-on: ubuntu-latest
     
     steps:
-      - name: 📦 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 🔧 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
           cache-dependency-path: yarn.lock
 
-      - name: 📥 Install dependencies
+      - name: Install dependencies
         run: |
           echo "Installing dependencies..."
           yarn install --frozen-lockfile --prefer-offline
 
-      - name: 🔍 Run ESLint
+      - name: Run ESLint
         run: |
           echo "Running linter..."
           yarn lint
-          echo "✅ Linting passed"
+          echo "Linting passed"
 
   # Stage 2: Type Checking
   type-check:
-    name: 📝 Type Check
+    name: Type Check
     runs-on: ubuntu-latest
     needs: lint
     
     steps:
-      - name: 📦 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 🔧 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
           cache-dependency-path: yarn.lock
 
-      - name: 📥 Install dependencies
+      - name: Install dependencies
         run: |
           echo "Installing dependencies..."
           yarn install --frozen-lockfile --prefer-offline
 
-      - name: 📝 TypeScript type check
+      - name: TypeScript type check
         run: |
           echo "Running TypeScript type check..."
           yarn type-check
-          echo "✅ Type checking passed"
+          echo "Type checking passed"
 
   # Stage 3: Build
   build:
-    name: 🔨 Build Website
+    name: Build Website
     runs-on: ubuntu-latest
     needs: [lint, type-check]
     
     steps:
-      - name: 📦 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 🔧 Setup Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'yarn'
           cache-dependency-path: yarn.lock
 
-      - name: 📥 Install dependencies
+      - name: Install dependencies
         run: |
           echo "Installing dependencies..."
           yarn install --frozen-lockfile --prefer-offline
 
-      - name: 🔨 Build production bundle
+      - name: Build production bundle
         run: |
           echo "Building production website..."
           yarn build
-          echo "✅ Build completed successfully"
+          echo "Build completed successfully"
         env:
           NODE_ENV: production
 
-      - name: 📊 Verify build output
+      - name: Verify build output
         run: |
           if [ ! -d "dist" ]; then
-            echo "❌ Error: dist directory not found after build"
+            echo "Error: dist directory not found after build"
             exit 1
           fi
           
-          echo "📁 Build output summary:"
+          echo "Build output summary:"
           echo "Total files: $(find dist -type f | wc -l)"
           echo "Total size: $(du -sh dist | cut -f1)"
           echo ""
-          echo "📄 Key files:"
+          echo "Key files:"
           ls -lh dist/ | head -10
-          echo "✅ Build verification passed"
+          echo "Build verification passed"
 
-      - name: 📦 Upload build artifacts
+      - name: Upload build artifacts
         uses: actions/upload-artifact@v4
         with:
           name: dist
@@ -127,30 +127,30 @@ jobs:
 
   # Stage 4: Deploy (only on main branch)
   deploy:
-    name: 🚀 Deploy to AWS
+    name: Deploy to AWS
     runs-on: ubuntu-latest
     needs: build
     if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     environment: main
     
     steps:
-      - name: 📦 Checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: 📥 Download build artifacts
+      - name: Download build artifacts
         uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist/
 
-      - name: 🔐 Configure AWS credentials
+      - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
           role-session-name: GitHubActions-Deploy-Website
 
-      - name: ☁️ Upload static assets to S3
+      - name: Upload static assets to S3
         run: |
           echo "Uploading static assets (JS, CSS, images) to S3..."
           aws s3 sync dist/ s3://${{ vars.S3_BUCKET_NAME }} \
@@ -164,9 +164,9 @@ jobs:
             --exclude "manifest.json" \
             --no-progress
           
-          echo "✅ Static assets uploaded"
+          echo "Static assets uploaded"
 
-      - name: 📄 Upload HTML and metadata files
+      - name: Upload HTML and metadata files
         run: |
           echo "Uploading HTML and metadata files..."
           aws s3 sync dist/ s3://${{ vars.S3_BUCKET_NAME }} \
@@ -180,9 +180,9 @@ jobs:
             --include "manifest.json" \
             --no-progress
           
-          echo "✅ HTML and metadata files uploaded"
+          echo "HTML and metadata files uploaded"
 
-      - name: 🗑️ Invalidate CloudFront cache
+      - name: Invalidate CloudFront cache
         run: |
           echo "Creating CloudFront invalidation..."
           INVALIDATION_ID=$(aws cloudfront create-invalidation \
@@ -198,32 +198,32 @@ jobs:
             --distribution-id ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }} \
             --id $INVALIDATION_ID
           
-          echo "✅ CloudFront cache invalidated successfully"
+          echo "CloudFront cache invalidated successfully"
 
-      - name: ✅ Deployment summary
+      - name: Deployment summary
         run: |
-          echo "## 🚀 Deployment Successful!" >> $GITHUB_STEP_SUMMARY
+          echo "## Deployment Successful" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Property | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|----------|-------|" >> $GITHUB_STEP_SUMMARY
-          echo "| 🌐 Website URL | [https://${{ vars.DOMAIN_NAME }}](https://${{ vars.DOMAIN_NAME }}) |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📦 S3 Bucket | \`${{ vars.S3_BUCKET_NAME }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| ☁️ CloudFront ID | \`${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📍 AWS Region | \`${{ vars.AWS_REGION }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 🔄 Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
-          echo "| 👤 Author | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| 📅 Deployed At | $(date -u +'%Y-%m-%d %H:%M:%S UTC') |" >> $GITHUB_STEP_SUMMARY
+          echo "| Website URL | [https://${{ vars.DOMAIN_NAME }}](https://${{ vars.DOMAIN_NAME }}) |" >> $GITHUB_STEP_SUMMARY
+          echo "| S3 Bucket | \`${{ vars.S3_BUCKET_NAME }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| CloudFront ID | \`${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| AWS Region | \`${{ vars.AWS_REGION }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Commit | \`${{ github.sha }}\` |" >> $GITHUB_STEP_SUMMARY
+          echo "| Author | ${{ github.actor }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Deployed At | $(date -u +'%Y-%m-%d %H:%M:%S UTC') |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Website deployed successfully to production!" >> $GITHUB_STEP_SUMMARY
+          echo "Website deployed successfully to production!" >> $GITHUB_STEP_SUMMARY
           
           echo ""
           echo "═══════════════════════════════════════"
-          echo "  🚀 DEPLOYMENT SUCCESSFUL"
+          echo "  DEPLOYMENT SUCCESSFUL"
           echo "═══════════════════════════════════════"
           echo ""
-          echo "🌐 Website: https://${{ vars.DOMAIN_NAME }}"
-          echo "📦 S3 Bucket: ${{ vars.S3_BUCKET_NAME }}"
-          echo "☁️  CloudFront: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
-          echo "📍 Region: ${{ vars.AWS_REGION }}"
-          echo "🔄 Commit: ${{ github.sha }}"
+          echo "Website: https://${{ vars.DOMAIN_NAME }}"
+          echo "S3 Bucket: ${{ vars.S3_BUCKET_NAME }}"
+          echo "CloudFront: ${{ vars.CLOUDFRONT_DISTRIBUTION_ID }}"
+          echo "Region: ${{ vars.AWS_REGION }}"
+          echo "Commit: ${{ github.sha }}"
           echo ""

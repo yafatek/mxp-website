@@ -9,7 +9,7 @@ interface SEOProps {
   ogType?: 'website' | 'article' | 'product'
   twitterCard?: 'summary' | 'summary_large_image'
   noindex?: boolean
-  structuredData?: Record<string, any>
+  structuredData?: Record<string, unknown>
 }
 
 const defaultSEO = {

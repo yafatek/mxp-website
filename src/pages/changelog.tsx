@@ -69,7 +69,7 @@ export function ChangelogPage() {
         if (response.ok) {
           const releases = await response.json()
           // Transform GitHub releases to our format
-          const transformed = releases.map((release: any) => ({
+          const transformed = releases.map((release: { tag_name: string; published_at: string; html_url: string; body: string }) => ({
             version: release.tag_name.replace('v', ''),
             date: release.published_at.split('T')[0],
             link: release.html_url,
