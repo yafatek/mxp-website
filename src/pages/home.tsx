@@ -1,4 +1,4 @@
-import { SEO, protocolStructuredData, organizationStructuredData } from '@/components/seo'
+import { SEO, protocolStructuredData, organizationStructuredData, createFAQStructuredData } from '@/components/seo'
 import { Hero } from '@/components/sections/hero'
 import { Features } from '@/components/sections/features'
 import { WhyMXP } from '@/components/sections/why-mxp'
@@ -11,12 +11,17 @@ import { SDKShowcase } from '@/components/sections/sdk-showcase'
 import { AdoptionPlaybook } from '@/components/sections/adoption-playbook'
 import { Pricing } from '@/components/sections/pricing'
 import { Community } from '@/components/sections/community'
+import { FAQSection, faqItems } from '@/components/sections/faq'
 
 export function HomePage() {
   return (
     <>
       <SEO 
-        structuredData={[protocolStructuredData, organizationStructuredData]}
+        structuredData={[
+          protocolStructuredData,
+          organizationStructuredData,
+          createFAQStructuredData(faqItems)
+        ]}
       />
       <Hero />
       <Features />
@@ -28,6 +33,7 @@ export function HomePage() {
       <SDKShowcase />
       <VisionRoadmap />
       <AdoptionPlaybook />
+      <FAQSection />
       <Pricing />
       <Community />
     </>

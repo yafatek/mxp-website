@@ -198,7 +198,7 @@ export function SDKShowcase() {
             {sdks.map((sdk, index) => (
               <div 
                 key={index}
-                className="glass rounded-2xl md:rounded-3xl p-4 md:p-8 lg:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 animate-fade-in w-full max-w-full overflow-hidden"
+                className="glass rounded-2xl md:rounded-3xl p-4 md:p-8 lg:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 animate-fade-in w-full max-w-full"
                 style={{ animationDelay: `${0.1 * index}s` }}
               >
                 <div className="flex flex-col gap-6 md:gap-8">
@@ -281,7 +281,7 @@ export function SDKShowcase() {
               {integrationExamples.map((example, index) => (
                 <div 
                   key={index}
-                  className="glass rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 hover-lift w-full max-w-full overflow-hidden"
+                  className="glass rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 hover-lift w-full max-w-full"
                 >
                   <h4 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {example.title}

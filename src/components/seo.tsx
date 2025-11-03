@@ -6,15 +6,21 @@ interface SEOProps {
   keywords?: string[]
   canonical?: string
   ogImage?: string
+  ogImageAlt?: string
+  ogTitle?: string
+  ogDescription?: string
   ogType?: 'website' | 'article' | 'product'
   twitterCard?: 'summary' | 'summary_large_image'
+  twitterTitle?: string
+  twitterDescription?: string
+  twitterImageAlt?: string
   noindex?: boolean
   structuredData?: Record<string, unknown> | Record<string, unknown>[]
 }
 
 const defaultSEO = {
-  title: 'MXP Protocol - Enterprise-Grade Agent Communication Protocol',
-  description: 'MXP delivers sub-millisecond latency with zero-copy architecture. Built on QUIC for the future of distributed AI agent systems. 100x faster than HTTP.',
+  title: 'MXP Protocol | Relay MXP - Enterprise-Grade Agent Communication',
+  description: 'Relay MXP (Mesh eXchange Protocol) delivers sub-millisecond latency with a zero-copy UDP transport, QUIC-grade security, and governed agent operations so teams can orchestrate autonomous AI workloads 100x faster than HTTP.',
   keywords: [
     'MXP Protocol',
     'agent communication',
@@ -36,6 +42,7 @@ const defaultSEO = {
     'high performance'
   ],
   ogImage: 'https://getmxp.xyz/og-image.png',
+  ogImageAlt: 'Relay MXP Protocol hero preview showing agent-to-agent communication architecture',
   canonical: 'https://getmxp.xyz',
   twitterHandle: '@yafatek'
 }
@@ -46,8 +53,14 @@ export function SEO({
   keywords = defaultSEO.keywords,
   canonical,
   ogImage = defaultSEO.ogImage,
+  ogImageAlt = defaultSEO.ogImageAlt,
+  ogTitle,
+  ogDescription,
   ogType = 'website',
   twitterCard = 'summary_large_image',
+  twitterTitle,
+  twitterDescription,
+  twitterImageAlt,
   noindex = false,
   structuredData
 }: SEOProps) {
@@ -63,10 +76,14 @@ export function SEO({
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
+      <meta itemProp="name" content={fullTitle} />
+      <meta itemProp="description" content={description} />
+      <meta itemProp="image" content={ogImage} />
       <meta name="keywords" content={keywords.join(', ')} />
       
       {/* Canonical URL */}
       <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hrefLang="en" href={canonicalUrl} />
       
       {/* Robots */}
       {noindex ? (
@@ -78,20 +95,24 @@ export function SEO({
       {/* Open Graph / Facebook */}
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:title" content={ogTitle || fullTitle} />
+      <meta property="og:description" content={ogDescription || description} />
       <meta property="og:image" content={ogImage} />
+      <meta property="og:image:secure_url" content={ogImage} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={ogImageAlt} />
+      <meta property="og:image:type" content="image/png" />
       <meta property="og:site_name" content="MXP Protocol" />
       <meta property="og:locale" content="en_US" />
       
       {/* Twitter */}
       <meta property="twitter:card" content={twitterCard} />
       <meta property="twitter:url" content={canonicalUrl} />
-      <meta property="twitter:title" content={fullTitle} />
-      <meta property="twitter:description" content={description} />
+      <meta property="twitter:title" content={twitterTitle || fullTitle} />
+      <meta property="twitter:description" content={twitterDescription || description} />
       <meta property="twitter:image" content={ogImage} />
+      <meta property="twitter:image:alt" content={twitterImageAlt || ogImageAlt} />
       <meta property="twitter:creator" content={defaultSEO.twitterHandle} />
       <meta property="twitter:site" content={defaultSEO.twitterHandle} />
       
@@ -192,6 +213,21 @@ export const organizationStructuredData = {
     "https://github.com/yafatek/mxp-protocol"
   ]
 }
+
+export const createFAQStructuredData = (
+  faqs: { question: string; answer: string; bullets?: string[] }[]
+) => ({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": [faq.answer, ...(faq.bullets ?? [])].join(' ')
+    }
+  }))
+})
 
 // Article structured data for blog posts/changelog
 export const createArticleStructuredData = (
