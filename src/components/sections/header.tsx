@@ -15,9 +15,12 @@ export function Header() {
   
   const navLinks = [
     { href: '/#features', label: 'Features', hash: true },
-    { href: '/#why', label: 'Why MXP', hash: true },
+    { href: '/#architecture', label: 'Architecture', hash: true },
+    { href: '/#protocol', label: 'Protocol', hash: true },
+    { href: '/#use-cases', label: 'Use Cases', hash: true },
+    { href: '/#sdks', label: 'SDKs', hash: true },
+    { href: '/#roadmap', label: 'Roadmap', hash: true },
     { href: '/docs', label: 'Docs', hash: false },
-    { href: '/changelog', label: 'Changelog', hash: false },
   ]
   
   return (

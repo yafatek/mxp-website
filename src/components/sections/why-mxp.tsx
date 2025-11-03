@@ -40,11 +40,11 @@ const benefits = [
   'Zero-copy message encoding/decoding',
   'Built-in distributed tracing',
   'Native streaming support',
-  'QUIC multiplexing & flow control',
-  'Automatic agent discovery',
-  'Sub-millisecond latency',
-  'TLS 1.3 security by default',
-  'Open specification & extensible'
+  'MXP-native multiplexing & flow control',
+  'Automatic agent discovery & lifecycle hooks',
+  'Sub-millisecond latency targets',
+  'Noise IK handshake with AEAD encryption',
+  'Open specification, extensible SDKs'
 ]
 
 export function WhyMXP() {

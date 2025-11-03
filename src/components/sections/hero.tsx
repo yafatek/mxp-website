@@ -51,9 +51,9 @@ export function Hero() {
             
             {/* Subheadline - Mobile Optimized */}
             <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 md:mb-12 font-light px-4">
-              MXP delivers <span className="font-semibold text-indigo-600 dark:text-indigo-400">sub-millisecond latency</span> with 
-              <span className="font-semibold text-blue-600 dark:text-blue-400"> zero-copy architecture</span>.
-              <span className="block mt-2">Built on QUIC for distributed AI agents.</span>
+              MXP targets <span className="font-semibold text-indigo-600 dark:text-indigo-400">sub-millisecond latency</span> with a
+              <span className="font-semibold text-blue-600 dark:text-blue-400"> zero-copy UDP transport</span> purpose-built for autonomous agents.
+              <span className="block mt-2">Relay adds the runtime, control plane, and SDKs teams need to operate governed agent workforces.</span>
             </p>
             
             {/* CTA Buttons - Mobile Optimized */}
@@ -94,7 +94,7 @@ export function Hero() {
               </div>
               <div className="hidden xs:block w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
               <div className="flex items-center gap-1.5">
-                <span className="font-mono font-semibold text-[10px] sm:text-xs">QUIC/UDP</span>
+                <span className="font-mono font-semibold text-[10px] sm:text-xs">UDP + Noise</span>
               </div>
               <div className="hidden xs:block w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-600" />
               <div className="flex items-center gap-1.5">
@@ -108,7 +108,7 @@ export function Hero() {
           </div>
           
           {/* Premium Stats Grid - Mobile Optimized */}
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 animate-fade-in px-4" style={{ animationDelay: '0.2s' }}>
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 animate-fade-in px-4" style={{ animationDelay: '0.2s' }}>
             {[
               {
                 icon: ClockIcon,

@@ -5,51 +5,83 @@ import { Check } from 'lucide-react'
 
 const plans = [
   {
-    name: 'Starter',
+    name: 'Open Source',
     price: 'Free',
-    description: 'Perfect for development and testing',
+    description: 'Protocol, SDKs, and reference implementations',
     features: [
-      'Up to 1,000 messages/day',
-      'Basic observability',
+      'MXP protocol specification',
+      'Rust & JavaScript SDKs',
+      'Reference agent implementations',
       'Community support',
-      'Single region deployment',
-      'Standard SLA',
+      'MIT/Apache-2.0 licensed',
+      'Full source code access',
+      'Public roadmap',
     ],
     cta: 'Get Started',
     popular: false,
+    highlight: 'Always Free',
   },
   {
-    name: 'Professional',
+    name: 'Relay Cloud',
     price: '$499',
     period: '/month',
-    description: 'For growing teams and production workloads',
+    description: 'Fully managed control plane and relay nodes',
     features: [
       'Up to 10M messages/month',
-      'Advanced observability & tracing',
-      'Priority support',
-      'Multi-region deployment',
+      'Managed control plane',
+      'Multi-region routing',
+      'Auto-scaling',
       '99.9% SLA',
-      'Dedicated account manager',
+      'DDoS mitigation',
+      'Latency dashboards',
+      'Priority support',
     ],
     cta: 'Start Free Trial',
     popular: true,
+    highlight: 'Most Popular',
   },
   {
     name: 'Enterprise',
     price: 'Custom',
-    description: 'For large-scale deployments and custom requirements',
+    description: 'For large-scale deployments with custom requirements',
     features: [
       'Unlimited messages',
-      'Full observability suite',
-      '24/7 dedicated support',
-      'Global edge deployment',
+      'Policy engine & RBAC',
+      'SSO/SAML integration',
+      'Compliance packs (SOC2, ISO 27001)',
+      'Air-gapped deployment',
+      'Audit trails & long-term support',
       '99.99% SLA',
+      '24/7 dedicated support',
       'Custom integrations',
-      'On-premise deployment option',
-      'Security & compliance certifications',
+      'Architecture reviews',
     ],
     cta: 'Contact Sales',
     popular: false,
+    highlight: 'White Glove Service',
+  },
+]
+
+const addOns = [
+  {
+    name: 'Dedicated Regions',
+    price: '$999/month',
+    description: 'Private relay nodes in your preferred regions'
+  },
+  {
+    name: 'Private Network Peering',
+    price: '$499/month',
+    description: 'Direct VPC peering for lowest latency'
+  },
+  {
+    name: 'Compliance Bundle',
+    price: '$1,999/month',
+    description: 'SOC2, ISO 27001, HIPAA compliance certifications'
+  },
+  {
+    name: 'Professional Services',
+    price: 'Custom',
+    description: 'Integration sprints, migration playbooks, architecture reviews'
   },
 ]
 
@@ -66,7 +98,7 @@ export function Pricing() {
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-8 md:grid-cols-3 mb-16">
           {plans.map((plan) => (
             <Card
               key={plan.name}
@@ -75,7 +107,14 @@ export function Pricing() {
               {plan.popular && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                   <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
-                    Most Popular
+                    {plan.highlight}
+                  </span>
+                </div>
+              )}
+              {!plan.popular && plan.highlight && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-secondary px-4 py-1 text-sm font-medium">
+                    {plan.highlight}
                   </span>
                 </div>
               )}
@@ -110,6 +149,55 @@ export function Pricing() {
             </Card>
           ))}
         </div>
+
+        {/* Add-Ons */}
+        <div className="mb-16">
+          <h3 className="text-3xl font-bold text-center mb-8">Premium Add-Ons</h3>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {addOns.map((addon) => (
+              <Card key={addon.name}>
+                <CardHeader>
+                  <CardTitle className="text-lg">{addon.name}</CardTitle>
+                  <div className="text-2xl font-bold text-primary mt-2">
+                    {addon.price}
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{addon.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+
+        {/* Value Proposition */}
+        <Card className="bg-muted/50">
+          <CardHeader>
+            <CardTitle>Why Relay Cloud?</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div>
+                <h4 className="font-semibold mb-2">🚀 Faster Time to Market</h4>
+                <p className="text-sm text-muted-foreground">
+                  Skip infrastructure setup. Deploy production agent meshes in minutes, not months.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">💰 Lower Total Cost</h4>
+                <p className="text-sm text-muted-foreground">
+                  100x better performance means 100x less infrastructure. Anchor pricing to delivered latency improvements.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-2">🔒 Enterprise Trust</h4>
+                <p className="text-sm text-muted-foreground">
+                  Built-in security, compliance, and governance. No bolt-on solutions required.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </Container>
     </section>
   )

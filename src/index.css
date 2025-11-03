@@ -200,8 +200,61 @@
   .hover-lift {
     @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl;
   }
+  
+  /* Mobile Responsive Fixes */
+  @media (max-width: 640px) {
+    /* Prevent horizontal overflow */
+    body {
+      overflow-x: hidden;
+    }
+    
+    /* Adjust container padding */
+    .container {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+    
+    /* Code blocks mobile */
+    pre {
+      font-size: 0.75rem;
+      padding: 1rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Table mobile */
+    table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      font-size: 0.875rem;
+    }
+    
+    th, td {
+      padding: 0.5rem !important;
+      white-space: nowrap;
+    }
+    
+    /* Reduce glass blur on mobile for performance */
+    .glass {
+      backdrop-filter: blur(8px);
+    }
+    
+    /* Touch-friendly tap targets */
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+  
+  /* Prevent text overflow */
+  * {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
-
-
-
-
