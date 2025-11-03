@@ -198,7 +198,7 @@ export function SDKShowcase() {
             {sdks.map((sdk, index) => (
               <div 
                 key={index}
-                className="glass rounded-2xl md:rounded-3xl p-4 md:p-8 lg:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 animate-fade-in"
+                className="glass rounded-2xl md:rounded-3xl p-4 md:p-8 lg:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 animate-fade-in w-full max-w-full overflow-hidden"
                 style={{ animationDelay: `${0.1 * index}s` }}
               >
                 <div className="flex flex-col gap-6 md:gap-8">
@@ -258,10 +258,12 @@ export function SDKShowcase() {
                     <h4 className="text-sm md:text-base lg:text-lg font-bold text-slate-900 dark:text-white mb-3 md:mb-4">
                       Quick Start
                     </h4>
-                    <div className="rounded-xl md:rounded-2xl bg-slate-900 dark:bg-slate-950 p-3 md:p-4 lg:p-6 overflow-x-auto border-2 border-slate-700 w-full">
-                      <pre className="text-[10px] sm:text-xs md:text-sm text-slate-100 font-mono leading-relaxed whitespace-pre">
-                        <code>{sdk.codeExample}</code>
-                      </pre>
+                    <div className="rounded-xl md:rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-4 md:p-5 lg:p-6 border border-slate-700/50 dark:border-slate-600/30 w-full max-w-full shadow-xl backdrop-blur-sm overflow-hidden">
+                      <div className="overflow-x-auto overscroll-x-contain">
+                        <pre className="text-[10px] sm:text-xs md:text-sm text-slate-100 dark:text-slate-200 font-mono leading-relaxed whitespace-pre min-w-full">
+                          <code>{sdk.codeExample}</code>
+                        </pre>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -279,7 +281,7 @@ export function SDKShowcase() {
               {integrationExamples.map((example, index) => (
                 <div 
                   key={index}
-                  className="glass rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 hover-lift"
+                  className="glass rounded-xl md:rounded-2xl p-4 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-indigo-500/30 transition-all duration-300 hover-lift w-full max-w-full overflow-hidden"
                 >
                   <h4 className="text-lg md:text-xl font-bold text-slate-900 dark:text-white mb-2">
                     {example.title}
@@ -288,10 +290,12 @@ export function SDKShowcase() {
                     {example.description}
                   </p>
                   
-                  <div className="rounded-lg md:rounded-xl bg-slate-900 dark:bg-slate-950 p-3 md:p-4 overflow-x-auto">
-                    <pre className="text-[10px] md:text-xs text-slate-100 font-mono leading-relaxed">
-                      <code>{example.code}</code>
-                    </pre>
+                  <div className="rounded-lg md:rounded-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950 p-3 md:p-4 border border-slate-700/50 dark:border-slate-600/30 shadow-lg backdrop-blur-sm w-full max-w-full overflow-hidden">
+                    <div className="overflow-x-auto overscroll-x-contain">
+                      <pre className="text-[10px] md:text-xs text-slate-100 dark:text-slate-200 font-mono leading-relaxed min-w-full">
+                        <code>{example.code}</code>
+                      </pre>
+                    </div>
                   </div>
                 </div>
               ))}

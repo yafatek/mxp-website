@@ -78,16 +78,16 @@ export function WhyMXP() {
           </div>
           
           {/* Comparison Table */}
-          <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <div className="glass rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-2xl">
-              <div className="overflow-x-auto">
-                <table className="w-full">
+          <div className="mb-12 md:mb-20 animate-fade-in px-4" style={{ animationDelay: '0.1s' }}>
+            <div className="glass rounded-2xl md:rounded-3xl overflow-hidden border-2 border-slate-200 dark:border-slate-700 shadow-2xl">
+              <div className="overflow-x-auto -webkit-overflow-scrolling-touch">
+                <table className="w-full min-w-[600px]">
                   <thead>
                     <tr className="bg-gradient-to-r from-indigo-600 to-blue-600">
-                      <th className="px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider">Metric</th>
-                      <th className="px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider">MXP</th>
-                      <th className="px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider">HTTP/REST</th>
-                      <th className="px-8 py-6 text-left text-sm font-bold text-white uppercase tracking-wider">Advantage</th>
+                      <th className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-left text-xs sm:text-sm font-bold text-white uppercase tracking-wider">Metric</th>
+                      <th className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-left text-xs sm:text-sm font-bold text-white uppercase tracking-wider">MXP</th>
+                      <th className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-left text-xs sm:text-sm font-bold text-white uppercase tracking-wider">HTTP/REST</th>
+                      <th className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-left text-xs sm:text-sm font-bold text-white uppercase tracking-wider">Advantage</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-slate-200 dark:divide-slate-700">
@@ -96,21 +96,21 @@ export function WhyMXP() {
                         key={index}
                         className="hover:bg-indigo-50/50 dark:hover:bg-indigo-950/20 transition-colors"
                       >
-                        <td className="px-8 py-6 text-sm font-semibold text-slate-900 dark:text-white">
+                        <td className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-xs sm:text-sm font-semibold text-slate-900 dark:text-white whitespace-nowrap">
                           {item.category}
                         </td>
-                        <td className="px-8 py-6 text-sm">
-                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 font-semibold">
+                        <td className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-xs sm:text-sm">
+                          <span className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-green-100 dark:bg-green-950/50 text-green-700 dark:text-green-400 font-semibold whitespace-nowrap">
                             {item.mxp}
                           </span>
                         </td>
-                        <td className="px-8 py-6 text-sm">
-                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">
+                        <td className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-xs sm:text-sm">
+                          <span className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono whitespace-nowrap">
                             {item.http}
                           </span>
                         </td>
-                        <td className="px-8 py-6 text-sm">
-                          <span className="text-indigo-600 dark:text-indigo-400 font-bold">
+                        <td className="px-3 sm:px-4 md:px-6 lg:px-8 py-3 sm:py-4 md:py-6 text-xs sm:text-sm">
+                          <span className="text-indigo-600 dark:text-indigo-400 font-bold whitespace-nowrap">
                             {item.advantage}
                           </span>
                         </td>
@@ -123,26 +123,26 @@ export function WhyMXP() {
           </div>
           
           {/* Benefits Grid */}
-          <div className="grid md:grid-cols-2 gap-12 mb-20">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-20 px-4">
             {/* Key Benefits */}
             <div className="animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500">
-                  <CubeTransparentIcon className="h-6 w-6 text-white" />
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 md:mb-8">
+                <div className="p-2 sm:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-indigo-500 to-blue-500">
+                  <CubeTransparentIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                   Key Benefits
                 </h3>
               </div>
               
-              <div className="space-y-4">
+              <div className="space-y-3 md:space-y-4">
                 {benefits.map((benefit, index) => (
                   <div 
                     key={index}
-                    className="flex items-start gap-3 p-4 rounded-xl glass hover:border-indigo-500/30 border-2 border-slate-200/50 dark:border-slate-700/50 transition-all duration-300 hover-lift"
+                    className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4 rounded-lg md:rounded-xl glass hover:border-indigo-500/30 border-2 border-slate-200/50 dark:border-slate-700/50 transition-all duration-300 hover-lift"
                   >
-                    <CheckCircleIcon className="h-6 w-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-0.5" />
-                    <span className="text-slate-700 dark:text-slate-300 font-medium">
+                    <CheckCircleIcon className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-600 dark:text-indigo-400 flex-shrink-0 mt-0.5" />
+                    <span className="text-sm sm:text-base text-slate-700 dark:text-slate-300 font-medium break-words min-w-0">
                       {benefit}
                     </span>
                   </div>
@@ -152,16 +152,16 @@ export function WhyMXP() {
             
             {/* Use Cases */}
             <div className="animate-fade-in" style={{ animationDelay: '0.3s' }}>
-              <div className="flex items-center gap-3 mb-8">
-                <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
-                  <ChartBarIcon className="h-6 w-6 text-white" />
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 md:mb-8">
+                <div className="p-2 sm:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
+                  <ChartBarIcon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                   Perfect For
                 </h3>
               </div>
               
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {[
                   {
                     title: 'AI Agent Meshes',
@@ -182,12 +182,12 @@ export function WhyMXP() {
                 ].map((useCase, index) => (
                   <div 
                     key={index}
-                    className="p-6 rounded-xl glass border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+                    className="p-4 sm:p-5 md:p-6 rounded-lg md:rounded-xl glass border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
                   >
-                    <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                    <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 break-words">
                       {useCase.title}
                     </h4>
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 leading-relaxed break-words">
                       {useCase.description}
                     </p>
                   </div>
@@ -197,30 +197,30 @@ export function WhyMXP() {
           </div>
           
           {/* CTA Section */}
-          <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <div className="inline-block p-8 rounded-3xl glass border-2 border-indigo-200 dark:border-indigo-800 shadow-2xl">
-              <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-4">
+          <div className="text-center animate-fade-in px-4" style={{ animationDelay: '0.4s' }}>
+            <div className="inline-block w-full max-w-4xl p-6 sm:p-8 rounded-2xl md:rounded-3xl glass border-2 border-indigo-200 dark:border-indigo-800 shadow-2xl">
+              <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 md:mb-4">
                 Ready to build the future?
               </h3>
-              <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl">
+              <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 mb-6 md:mb-8 max-w-2xl mx-auto">
                 Start building with MXP today. Open source, production-ready, and backed by a growing community.
               </p>
-              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4">
                 <Button 
                   size="lg" 
-                  className="text-lg px-10 py-7 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-700 hover:via-blue-700 hover:to-cyan-700 btn-glow text-white font-semibold" 
+                  className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 hover:from-indigo-700 hover:via-blue-700 hover:to-cyan-700 btn-glow text-white font-semibold touch-manipulation" 
                   asChild
                 >
                   <Link to="/docs">
                     Get Started
-                    <ArrowRightIcon className="ml-2 h-5 w-5" />
+                    <ArrowRightIcon className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
                   </Link>
                 </Button>
                 
                 <Button 
                   size="lg" 
                   variant="outline" 
-                  className="text-lg px-10 py-7 border-2 border-slate-300 dark:border-slate-700 hover:border-indigo-600 dark:hover:border-indigo-500 font-semibold" 
+                  className="text-base sm:text-lg px-6 sm:px-8 md:px-10 py-5 sm:py-6 md:py-7 border-2 border-slate-300 dark:border-slate-700 hover:border-indigo-600 dark:hover:border-indigo-500 font-semibold touch-manipulation" 
                   asChild
                 >
                   <a href="https://github.com/yafatek/mxp-protocol" target="_blank" rel="noopener noreferrer">

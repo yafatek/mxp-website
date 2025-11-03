@@ -87,60 +87,60 @@ const addOns = [
 
 export function Pricing() {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-12 md:py-20 lg:py-24 bg-background">
       <Container>
-        <div className="mx-auto max-w-2xl text-center mb-16">
-          <h2 className="text-4xl font-bold tracking-tight sm:text-5xl mb-4">
+        <div className="mx-auto max-w-2xl text-center mb-8 md:mb-12 lg:mb-16 px-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
             Choose the plan that fits your needs. Upgrade or downgrade at any time.
           </p>
         </div>
 
-        <div className="grid gap-8 md:grid-cols-3 mb-16">
+        <div className="grid gap-4 sm:gap-6 md:gap-8 grid-cols-1 md:grid-cols-3 mb-8 md:mb-12 lg:mb-16 px-4">
           {plans.map((plan) => (
             <Card
               key={plan.name}
-              className={plan.popular ? 'border-2 border-primary relative' : ''}
+              className={plan.popular ? 'border-2 border-primary relative' : 'relative'}
             >
               {plan.popular && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-primary px-4 py-1 text-sm font-medium text-primary-foreground">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="rounded-full bg-primary px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium text-primary-foreground whitespace-nowrap">
                     {plan.highlight}
                   </span>
                 </div>
               )}
               {!plan.popular && plan.highlight && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-secondary px-4 py-1 text-sm font-medium">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
+                  <span className="rounded-full bg-secondary px-3 sm:px-4 py-1 text-xs sm:text-sm font-medium whitespace-nowrap">
                     {plan.highlight}
                   </span>
                 </div>
               )}
-              <CardHeader>
-                <CardTitle className="text-2xl">{plan.name}</CardTitle>
-                <CardDescription className="mt-2">{plan.description}</CardDescription>
-                <div className="mt-4">
-                  <span className="text-4xl font-bold">{plan.price}</span>
+              <CardHeader className="pt-6">
+                <CardTitle className="text-xl sm:text-2xl">{plan.name}</CardTitle>
+                <CardDescription className="mt-2 text-sm sm:text-base">{plan.description}</CardDescription>
+                <div className="mt-3 sm:mt-4">
+                  <span className="text-3xl sm:text-4xl font-bold">{plan.price}</span>
                   {plan.period && (
-                    <span className="text-muted-foreground">{plan.period}</span>
+                    <span className="text-sm sm:text-base text-muted-foreground">{plan.period}</span>
                   )}
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   {plan.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                      <span>{feature}</span>
+                    <li key={feature} className="flex items-start gap-2 sm:gap-3">
+                      <Check className="mt-0.5 h-4 w-4 sm:h-5 sm:w-5 shrink-0 text-primary" />
+                      <span className="text-sm sm:text-base break-words min-w-0">{feature}</span>
                     </li>
                   ))}
                 </ul>
               </CardContent>
               <CardFooter>
                 <Button
-                  className="w-full"
+                  className="w-full text-sm sm:text-base touch-manipulation"
                   variant={plan.popular ? 'default' : 'outline'}
                 >
                   {plan.cta}
@@ -151,19 +151,19 @@ export function Pricing() {
         </div>
 
         {/* Add-Ons */}
-        <div className="mb-16">
-          <h3 className="text-3xl font-bold text-center mb-8">Premium Add-Ons</h3>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-8 md:mb-12 lg:mb-16 px-4">
+          <h3 className="text-2xl sm:text-3xl font-bold text-center mb-6 md:mb-8">Premium Add-Ons</h3>
+          <div className="grid gap-4 sm:gap-5 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {addOns.map((addon) => (
               <Card key={addon.name}>
                 <CardHeader>
-                  <CardTitle className="text-lg">{addon.name}</CardTitle>
-                  <div className="text-2xl font-bold text-primary mt-2">
+                  <CardTitle className="text-base sm:text-lg break-words">{addon.name}</CardTitle>
+                  <div className="text-xl sm:text-2xl font-bold text-primary mt-2">
                     {addon.price}
                   </div>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{addon.description}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground break-words">{addon.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -171,27 +171,27 @@ export function Pricing() {
         </div>
 
         {/* Value Proposition */}
-        <Card className="bg-muted/50">
+        <Card className="bg-muted/50 mx-4">
           <CardHeader>
-            <CardTitle>Why Relay Cloud?</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Why Relay Cloud?</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
               <div>
-                <h4 className="font-semibold mb-2">🚀 Faster Time to Market</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">🚀 Faster Time to Market</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground break-words">
                   Skip infrastructure setup. Deploy production agent meshes in minutes, not months.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">💰 Lower Total Cost</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">💰 Lower Total Cost</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground break-words">
                   100x better performance means 100x less infrastructure. Anchor pricing to delivered latency improvements.
                 </p>
               </div>
               <div>
-                <h4 className="font-semibold mb-2">🔒 Enterprise Trust</h4>
-                <p className="text-sm text-muted-foreground">
+                <h4 className="font-semibold mb-2 text-sm sm:text-base">🔒 Enterprise Trust</h4>
+                <p className="text-xs sm:text-sm text-muted-foreground break-words">
                   Built-in security, compliance, and governance. No bolt-on solutions required.
                 </p>
               </div>

@@ -142,9 +142,9 @@ const packagingTargets = [
 
 export function PlatformOverview() {
   return (
-    <section id="platform" className="relative py-32 bg-white dark:bg-slate-950">
+    <section id="platform" className="relative py-12 md:py-20 lg:py-32 bg-white dark:bg-slate-950">
       <Container>
-        <div className="mx-auto max-w-7xl">
+        <div className="mx-auto max-w-7xl px-4">
           {/* Section Header */}
           <div className="text-center mb-20 animate-fade-in">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 dark:bg-blue-950/50 mb-6">
@@ -168,45 +168,45 @@ export function PlatformOverview() {
           </div>
 
           {/* Stack Components */}
-          <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.1s' }}>
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">
+          <div className="mb-12 md:mb-20 animate-fade-in" style={{ animationDelay: '0.1s' }}>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6 md:mb-10 text-center">
               Stack Components
             </h3>
             
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {stackComponents.map((component, index) => {
                 const Icon = component.icon
                 return (
                   <div 
                     key={index}
-                    className="glass rounded-3xl p-8 md:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300"
+                    className="glass rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-10 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300"
                   >
-                    <div className="flex items-start gap-6 mb-6">
-                      <div className={`flex-shrink-0 p-4 rounded-2xl bg-gradient-to-br ${component.gradient}`}>
-                        <Icon className="h-8 w-8 text-white" />
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6 mb-4 md:mb-6">
+                      <div className={`flex-shrink-0 p-3 sm:p-4 rounded-xl md:rounded-2xl bg-gradient-to-br ${component.gradient}`}>
+                        <Icon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-white" />
                       </div>
                       
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <h4 className="text-2xl font-bold text-slate-900 dark:text-white">
+                      <div className="flex-1 min-w-0 w-full">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-3 mb-2">
+                          <h4 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 dark:text-white break-words">
                             {component.title}
                           </h4>
-                          <code className="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-mono">
+                          <code className="px-2 sm:px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs sm:text-sm font-mono w-fit">
                             {component.path}
                           </code>
                         </div>
-                        <p className="text-slate-600 dark:text-slate-400 mb-6">
+                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 mb-4 md:mb-6 break-words">
                           {component.description}
                         </p>
                         
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+                        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-3">
                           {component.features.map((feature, idx) => (
                             <div 
                               key={idx}
-                              className="flex items-center gap-2 p-3 rounded-xl bg-slate-50 dark:bg-slate-800/50"
+                              className="flex items-start gap-2 p-2 sm:p-3 rounded-lg md:rounded-xl bg-slate-50 dark:bg-slate-800/50"
                             >
-                              <div className="w-2 h-2 rounded-full bg-blue-500" />
-                              <span className="text-sm text-slate-700 dark:text-slate-300">
+                              <div className="w-2 h-2 rounded-full bg-blue-500 flex-shrink-0 mt-1.5" />
+                              <span className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 break-words min-w-0">
                                 {feature}
                               </span>
                             </div>
@@ -221,37 +221,37 @@ export function PlatformOverview() {
           </div>
 
           {/* Reliability & Operations */}
-          <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">
+          <div className="mb-12 md:mb-20 animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6 md:mb-10 text-center">
               Reliability & Operations
             </h3>
             
-            <div className="grid lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {reliabilityFeatures.map((feature, index) => {
                 const Icon = feature.icon
                 return (
                   <div 
                     key={index}
-                    className="glass rounded-2xl p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+                    className="glass rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
-                        <Icon className="h-6 w-6 text-white" />
+                    <div className="flex items-center gap-2 sm:gap-3 mb-3 md:mb-4">
+                      <div className="p-2 sm:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words min-w-0">
                         {feature.title}
                       </h4>
                     </div>
                     
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 md:mb-4 break-words">
                       {feature.description}
                     </p>
                     
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 md:space-y-2">
                       {feature.details.map((detail, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                          <span className="text-blue-500 mt-0.5">•</span>
-                          <span>{detail}</span>
+                        <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-blue-500 mt-0.5 flex-shrink-0">•</span>
+                          <span className="break-words min-w-0">{detail}</span>
                         </li>
                       ))}
                     </ul>
@@ -262,21 +262,21 @@ export function PlatformOverview() {
           </div>
 
           {/* Security & Governance */}
-          <div className="mb-20 animate-fade-in" style={{ animationDelay: '0.3s' }}>
-            <div className="glass rounded-3xl p-8 md:p-12 border-2 border-blue-200 dark:border-blue-800">
-              <div className="flex items-center gap-3 mb-8">
-                <ShieldCheckIcon className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+          <div className="mb-12 md:mb-20 animate-fade-in" style={{ animationDelay: '0.3s' }}>
+            <div className="glass rounded-2xl md:rounded-3xl p-4 sm:p-6 md:p-8 lg:p-12 border-2 border-blue-200 dark:border-blue-800">
+              <div className="flex items-center gap-2 sm:gap-3 mb-6 md:mb-8">
+                <ShieldCheckIcon className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white">
                   Security & Governance
                 </h3>
               </div>
               
-              <div className="grid md:grid-cols-3 gap-8">
+              <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 md:mb-3">
                     Transport Security
                   </h4>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <ul className="space-y-1.5 md:space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     <li>• Noise IK-like handshake</li>
                     <li>• X25519 key exchange</li>
                     <li>• ChaCha20-Poly1305 / AES-GCM</li>
@@ -287,10 +287,10 @@ export function PlatformOverview() {
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 md:mb-3">
                     Runtime Controls
                   </h4>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <ul className="space-y-1.5 md:space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     <li>• Policy observers</li>
                     <li>• Audit emitters</li>
                     <li>• Capability manifests</li>
@@ -301,10 +301,10 @@ export function PlatformOverview() {
                 </div>
                 
                 <div>
-                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-3">
+                  <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 md:mb-3">
                     Enterprise Features
                   </h4>
-                  <ul className="space-y-2 text-sm text-slate-600 dark:text-slate-400">
+                  <ul className="space-y-1.5 md:space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-400">
                     <li>• Secret distribution</li>
                     <li>• Policy authoring UI</li>
                     <li>• Audit log retention</li>
@@ -319,41 +319,41 @@ export function PlatformOverview() {
 
           {/* Packaging Targets */}
           <div className="animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-10 text-center">
+            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-6 md:mb-10 text-center">
               Deployment Options
             </h3>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
               {packagingTargets.map((target, index) => {
                 const Icon = target.icon
                 return (
                   <div 
                     key={index}
-                    className="glass rounded-2xl p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
+                    className="glass rounded-xl md:rounded-2xl p-4 sm:p-5 md:p-6 border-2 border-slate-200/50 dark:border-slate-700/50 hover:border-blue-500/30 transition-all duration-300 hover-lift"
                   >
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="p-3 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500">
-                        <Icon className="h-6 w-6 text-white" />
+                    <div className="flex items-start gap-2 sm:gap-3 mb-3 md:mb-4">
+                      <div className="p-2 sm:p-3 rounded-lg md:rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex-shrink-0">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <div>
-                        <h4 className="text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="min-w-0">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-words">
                           {target.target}
                         </h4>
-                        <span className="text-xs text-blue-600 dark:text-blue-400 font-semibold">
+                        <span className="text-[10px] sm:text-xs text-blue-600 dark:text-blue-400 font-semibold">
                           {target.timeline}
                         </span>
                       </div>
                     </div>
                     
-                    <p className="text-sm text-slate-600 dark:text-slate-400 mb-4">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mb-3 md:mb-4 break-words">
                       {target.description}
                     </p>
                     
-                    <ul className="space-y-2">
+                    <ul className="space-y-1.5 md:space-y-2">
                       {target.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                          <span className="text-blue-500 mt-0.5">✓</span>
-                          <span>{feature}</span>
+                        <li key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                          <span className="text-blue-500 mt-0.5 flex-shrink-0">✓</span>
+                          <span className="break-words min-w-0">{feature}</span>
                         </li>
                       ))}
                     </ul>
