@@ -40,7 +40,7 @@ export const faqItems: FAQItem[] = [
     answer: 'MXP unlocks coordination-heavy workloads where HTTP melts down: multi-agent research assistants, realtime inference marketplaces, on-prem orchestration, and cross-cloud data sync. Teams report up to 100x throughput gains and single-digit millisecond round trips after migrating from REST + websockets.',
     bullets: [
       'Autonomous agent workforces that fan out high-volume tool calls',
-      'Realtime analytics streams and LLM token relays that cannot tolerate head-of-line blocking',
+      'Realtime analytics streams and LLM token mxpnexuss that cannot tolerate head-of-line blocking',
       'Low-latency control systems for robotics, industrial IoT, and financial services'
     ]
   },

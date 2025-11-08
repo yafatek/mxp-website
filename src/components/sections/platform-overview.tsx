@@ -41,7 +41,7 @@ const stackComponents = [
   },
   {
     title: 'Control Plane',
-    path: 'relay/',
+    path: 'mxpnexus/',
     icon: CloudIcon,
     gradient: 'from-cyan-500 to-teal-500',
     description: 'CLI + services for registry, policy, observability, and operator workflows',

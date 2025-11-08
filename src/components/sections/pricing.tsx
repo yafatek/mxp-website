@@ -25,7 +25,7 @@ const plans = [
     name: 'MXP Nexus Cloud',
     price: '$499',
     period: '/month',
-    description: 'Fully managed control plane and relay nodes',
+    description: 'Fully managed control plane and mxpnexus nodes',
     features: [
       'Up to 10M messages/month',
       'Managed control plane',
@@ -66,7 +66,7 @@ const addOns = [
   {
     name: 'Dedicated Regions',
     price: '$999/month',
-    description: 'Private relay nodes in your preferred regions'
+    description: 'Private mxpnexus nodes in your preferred regions'
   },
   {
     name: 'Private Network Peering',
