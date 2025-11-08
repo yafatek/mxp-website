@@ -16,7 +16,7 @@ const architectureLayers = [
     details: ['HTTP/SSE for browsers', 'Direct UDP for trusted networks', 'WebTransport gateway support']
   },
   {
-    title: 'Relay Control Plane',
+    title: 'MXP Nexus Control Plane',
     description: 'Centralized governance, policy enforcement, and observability',
     icon: ServerStackIcon,
     gradient: 'from-blue-500 to-cyan-500',

@@ -28,7 +28,7 @@ const resources = [
     description: 'Working examples and reference implementations',
     links: [
       { label: 'Ping Pong Example', url: 'https://github.com/yafatek/mxp-protocol/blob/main/examples/ping_pong.rs' },
-      { label: 'Agent Mesh Demo', url: 'https://github.com/yafatek/relay/tree/main/agents-mesh' },
+      { label: 'Agent Mesh Demo', url: 'https://github.com/yafatek/mxpnexus/tree/main/agents-mesh' },
       { label: 'All Examples', url: 'https://github.com/yafatek/mxp-protocol/tree/main/examples' },
       { label: 'Benchmarks', url: 'https://github.com/yafatek/mxp-protocol/tree/main/benches' }
     ]
@@ -42,7 +42,7 @@ const resources = [
       { label: 'GitHub Discussions', url: 'https://github.com/yafatek/mxp-protocol/discussions' },
       { label: 'GitHub Issues', url: 'https://github.com/yafatek/mxp-protocol/issues' },
       { label: 'Twitter/X', url: 'https://twitter.com/mxp_protocol' },
-      { label: 'Contact Us', url: 'mailto:community@relaymxp.xyz' }
+      { label: 'Contact Us', url: 'mailto:community@mxpnexus.com' }
     ]
   },
   {
@@ -54,7 +54,7 @@ const resources = [
       { label: 'Contributing Guide', url: 'https://github.com/yafatek/mxp-protocol/blob/main/CONTRIBUTING.md' },
       { label: 'Code of Conduct', url: 'https://github.com/yafatek/mxp-protocol/blob/main/CODE_OF_CONDUCT.md' },
       { label: 'Open Issues', url: 'https://github.com/yafatek/mxp-protocol/issues' },
-      { label: 'RFC Process', url: 'https://github.com/yafatek/relay/blob/main/docs/roadmap.md' }
+      { label: 'RFC Process', url: 'https://github.com/yafatek/mxpnexus/blob/main/docs/roadmap.md' }
     ]
   }
 ]
@@ -69,7 +69,7 @@ const stats = [
 const communityChannels = [
   {
     name: 'GitHub Discussions',
-    description: 'General discussion about MXP and Relay',
+    description: 'General discussion about MXP and MXP Nexus',
     icon: '💬',
     url: 'https://github.com/yafatek/mxp-protocol/discussions'
   },

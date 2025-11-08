@@ -133,7 +133,7 @@ export function VisionRoadmap() {
             </h2>
             
             <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Relay is the low-latency agent operations platform for enterprises that need deterministic, secure, and observable agent-to-agent workflows.
+              MXP Nexus is the low-latency agent operations platform for enterprises that need deterministic, secure, and observable agent-to-agent workflows.
             </p>
           </div>
 
@@ -279,7 +279,7 @@ export function VisionRoadmap() {
                 <div className="text-center">
                   <div className="text-4xl mb-3">☁️</div>
                   <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-                    Relay Platform
+                    MXP Nexus Platform
                   </h4>
                   <p className="text-sm text-slate-600 dark:text-slate-400">
                     Self-managed + managed cloud with dashboards, policy studio, unified observability

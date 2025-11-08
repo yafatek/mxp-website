@@ -57,7 +57,7 @@ while let Some(chunk) = stream.next().await {
       'API parity with Rust SDK',
       'React hooks for streaming'
     ],
-    codeExample: `import { MxpClient } from '@relay/mxp';
+    codeExample: `import { MxpClient } from '@mxpnexus/mxp';
 
 // Create MXP client (Node or Browser)
 const client = await MxpClient.connect('mxp://localhost:9000');
@@ -75,8 +75,8 @@ for await (const chunk of stream) {
 }`,
     links: [
       { label: 'GitHub', url: 'https://github.com/yafatek/mxp-js' },
-      { label: 'npm', url: 'https://npmjs.com/package/@relay/mxp' },
-      { label: 'Docs', url: 'https://docs.relaymxp.xyz/js' }
+      { label: 'npm', url: 'https://npmjs.com/package/@mxpnexus/mxp' },
+      { label: 'Docs', url: 'https://docs.mxpnexus.com/js' }
     ]
   },
   {
@@ -93,7 +93,7 @@ for await (const chunk of stream) {
       'Jupyter notebook support',
       'PyPI distribution'
     ],
-    codeExample: `from relay_mxp import MxpClient
+    codeExample: `from mxpnexus_mxp import MxpClient
 
 # Create MXP client
 async with MxpClient.connect("mxp://localhost:9000") as client:
@@ -109,7 +109,7 @@ async with MxpClient.connect("mxp://localhost:9000") as client:
     async for chunk in client.open_stream(agent_id):
         print(f"Token: {chunk}")`,
     links: [
-      { label: 'Roadmap', url: 'https://github.com/yafatek/relay/blob/main/ROADMAP.md' }
+      { label: 'Roadmap', url: 'https://github.com/yafatek/mxpnexus/blob/main/ROADMAP.md' }
     ]
   }
 ]
@@ -118,7 +118,7 @@ const integrationExamples = [
   {
     title: 'React + MXP',
     description: 'Stream LLM responses directly to React components',
-    code: `import { useMxpStream } from '@relay/mxp-react';
+    code: `import { useMxpStream } from '@mxpnexus/mxp-react';
 
 function AgentChat({ agentId }) {
   const { tokens, isStreaming } = useMxpStream(agentId, query);
@@ -134,7 +134,7 @@ function AgentChat({ agentId }) {
   {
     title: 'Node.js Backend',
     description: 'Build high-performance agent coordinators',
-    code: `import { MxpServer } from '@relay/mxp';
+    code: `import { MxpServer } from '@mxpnexus/mxp';
 
 const server = new MxpServer({ port: 9000 });
 
@@ -152,7 +152,7 @@ await server.listen();`
     title: 'FastAPI Integration',
     description: 'Expose MXP agents via REST API',
     code: `from fastapi import FastAPI
-from relay_mxp import MxpClient
+from mxpnexus_mxp import MxpClient
 
 app = FastAPI()
 mxp = MxpClient.connect("mxp://localhost:9000")
@@ -323,7 +323,7 @@ export function SDKShowcase() {
                 </a>
                 
                 <a 
-                  href="mailto:sdk@relaymxp.xyz?subject=SDK Waitlist"
+                  href="mailto:sdk@mxpnexus.com?subject=SDK Waitlist"
                   className="inline-flex items-center justify-center gap-2 px-6 md:px-8 py-3 md:py-4 rounded-xl border-2 border-slate-300 dark:border-slate-700 hover:border-indigo-600 dark:hover:border-indigo-500 text-slate-900 dark:text-white font-semibold transition-all duration-300 hover-lift text-sm md:text-base"
                 >
                   Join SDK Waitlist

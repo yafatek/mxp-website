@@ -22,7 +22,7 @@ const plans = [
     highlight: 'Always Free',
   },
   {
-    name: 'Relay Cloud',
+    name: 'MXP Nexus Cloud',
     price: '$499',
     period: '/month',
     description: 'Fully managed control plane and relay nodes',
@@ -173,7 +173,7 @@ export function Pricing() {
         {/* Value Proposition */}
         <Card className="bg-muted/50 mx-4">
           <CardHeader>
-            <CardTitle className="text-xl sm:text-2xl">Why Relay Cloud?</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">Why MXP Nexus Cloud?</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6">

@@ -9,8 +9,8 @@ export interface FAQItem {
 
 export const faqItems: FAQItem[] = [
   {
-    question: 'What is Relay MXP and why is it different from HTTP-based APIs?',
-    answer: 'Relay MXP (Mesh eXchange Protocol) is a binary, agent-to-agent transport that delivers sub-millisecond P99 latency with zero-copy streaming. Unlike HTTP/REST, MXP keeps long-lived secure sessions over UDP + Noise to move tokens, events, and control messages in the same session without head-of-line blocking or JSON serialization overhead.',
+    question: 'What is MXP Nexus MXP and why is it different from HTTP-based APIs?',
+    answer: 'MXP Nexus MXP (Mesh eXchange Protocol) is a binary, agent-to-agent transport that delivers sub-millisecond P99 latency with zero-copy streaming. Unlike HTTP/REST, MXP keeps long-lived secure sessions over UDP + Noise to move tokens, events, and control messages in the same session without head-of-line blocking or JSON serialization overhead.',
     bullets: [
       'Purpose-built for autonomous agents, LLM streaming, and realtime coordination',
       '32-byte cache-aligned header with XXHash3 checksums keeps payloads ultra-light',
@@ -19,7 +19,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'How quickly can engineering teams integrate MXP into existing stacks?',
-    answer: 'Start with the Rust SDK in minutes and layer in JavaScript or Python as they reach beta. Relay ships language-specific quick starts, message builders, and fully typed APIs so teams can attach MXP to existing microservices, data pipelines, or agent workflows without rewriting business logic.',
+    answer: 'Start with the Rust SDK in minutes and layer in JavaScript or Python as they reach beta. MXP Nexus ships language-specific quick starts, message builders, and fully typed APIs so teams can attach MXP to existing microservices, data pipelines, or agent workflows without rewriting business logic.',
     bullets: [
       'Drop-in Rust SDK with async/await patterns and tracing included',
       'JavaScript SDK (beta) adds WebTransport + Node UDP for hybrid deployments',
@@ -28,7 +28,7 @@ export const faqItems: FAQItem[] = [
   },
   {
     question: 'How does MXP secure agent communication and comply with enterprise controls?',
-    answer: 'Relay MXP combines Noise IK handshakes, TLS 1.3-grade encryption, and policy-driven governance. Every message carries trace IDs, audit metadata, and the ability to enforce allow/deny policies so regulated teams can prove who called which agent and when.',
+    answer: 'MXP Nexus MXP combines Noise IK handshakes, TLS 1.3-grade encryption, and policy-driven governance. Every message carries trace IDs, audit metadata, and the ability to enforce allow/deny policies so regulated teams can prove who called which agent and when.',
     bullets: [
       'Noise IK + X25519 key exchange with ChaCha20-Poly1305 or AES-GCM',
       'Header protection, replay defense, and multi-factor session resumption',
@@ -36,7 +36,7 @@ export const faqItems: FAQItem[] = [
     ]
   },
   {
-    question: 'What use cases see the biggest lift from Relay MXP?',
+    question: 'What use cases see the biggest lift from MXP Nexus MXP?',
     answer: 'MXP unlocks coordination-heavy workloads where HTTP melts down: multi-agent research assistants, realtime inference marketplaces, on-prem orchestration, and cross-cloud data sync. Teams report up to 100x throughput gains and single-digit millisecond round trips after migrating from REST + websockets.',
     bullets: [
       'Autonomous agent workforces that fan out high-volume tool calls',
@@ -45,8 +45,8 @@ export const faqItems: FAQItem[] = [
     ]
   },
   {
-    question: 'Is Relay MXP open source and what is the pricing model?',
-    answer: 'The core protocol and Rust implementation are open source on GitHub under the MIT/Apache-2.0 dual license. Relay offers enterprise support, managed control planes, and governance tooling so large teams can operate MXP in mission-critical environments without managing infrastructure alone.',
+    question: 'Is MXP Nexus MXP open source and what is the pricing model?',
+    answer: 'The core protocol and Rust implementation are open source on GitHub under the MIT/Apache-2.0 dual license. MXP Nexus offers enterprise support, managed control planes, and governance tooling so large teams can operate MXP in mission-critical environments without managing infrastructure alone.',
     bullets: [
       'Open-source crates and specs available on GitHub and crates.io',
       'Commercial SLAs, deployment automation, and observability add-ons available on request',
@@ -80,7 +80,7 @@ export function FAQSection() {
               Enterprise Search-Optimized Answers
             </h2>
             <p className="text-sm sm:text-base md:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              The most common discovery, security, and adoption questions buyers ask when evaluating Relay MXP. Optimized for product marketing pages, analyst reviews, and social sharing snippets.
+              The most common discovery, security, and adoption questions buyers ask when evaluating MXP Nexus MXP. Optimized for product marketing pages, analyst reviews, and social sharing snippets.
             </p>
           </div>
 

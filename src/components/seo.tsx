@@ -19,8 +19,8 @@ interface SEOProps {
 }
 
 const defaultSEO = {
-  title: 'MXP Protocol | Relay MXP - Enterprise-Grade Agent Communication',
-  description: 'Relay MXP (Mesh eXchange Protocol) delivers sub-millisecond latency with a zero-copy UDP transport, QUIC-grade security, and governed agent operations so teams can orchestrate autonomous AI workloads 100x faster than HTTP.',
+  title: 'MXP Protocol | MXP Nexus MXP - Enterprise-Grade Agent Communication',
+  description: 'MXP Nexus MXP (Mesh eXchange Protocol) delivers sub-millisecond latency with a zero-copy UDP transport, QUIC-grade security, and governed agent operations so teams can orchestrate autonomous AI workloads 100x faster than HTTP.',
   keywords: [
     'MXP Protocol',
     'agent communication',
@@ -42,7 +42,7 @@ const defaultSEO = {
     'high performance'
   ],
   ogImage: 'https://getmxp.xyz/og-image.png',
-  ogImageAlt: 'Relay MXP Protocol hero preview showing agent-to-agent communication architecture',
+  ogImageAlt: 'MXP Nexus MXP Protocol hero preview showing agent-to-agent communication architecture',
   canonical: 'https://getmxp.xyz',
   twitterHandle: '@yafatek'
 }

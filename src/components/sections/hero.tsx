@@ -53,7 +53,7 @@ export function Hero() {
             <p className="mx-auto max-w-3xl text-base sm:text-lg md:text-xl lg:text-2xl text-slate-600 dark:text-slate-300 leading-relaxed mb-8 md:mb-12 font-light px-4">
               MXP targets <span className="font-semibold text-indigo-600 dark:text-indigo-400">sub-millisecond latency</span> with a
               <span className="font-semibold text-blue-600 dark:text-blue-400"> zero-copy UDP transport</span> purpose-built for autonomous agents.
-              <span className="block mt-2">Relay adds the runtime, control plane, and SDKs teams need to operate governed agent workforces.</span>
+              <span className="block mt-2">MXP Nexus adds the runtime, control plane, and SDKs teams need to operate governed agent workforces.</span>
             </p>
             
             {/* CTA Buttons - Mobile Optimized */}

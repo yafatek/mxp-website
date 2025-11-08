@@ -1,7 +1,7 @@
 # MXP Website - Comprehensive Update
 
 ## Overview
-Transformed the MXP website into a comprehensive, generous showcase of the entire Relay + MXP ecosystem, leveraging all documentation from `/docs` and existing content.
+Transformed the MXP website into a comprehensive, generous showcase of the entire MXP Nexus + MXP ecosystem, leveraging all documentation from `/docs` and existing content.
 
 ## New Sections Created
 
@@ -12,7 +12,7 @@ Transformed the MXP website into a comprehensive, generous showcase of the entir
 - Production-ready features (Security, Observability, Governance)
 
 ### 2. **Vision & Roadmap Section** (`vision-roadmap.tsx`)
-- Core pillars of the Relay vision
+- Core pillars of the MXP Nexus vision
 - Detailed milestone timeline (MXP v0.2 → v1.0 GA)
 - Visual timeline with status indicators (in-progress, planned, future)
 - Long-range direction (2027+) with 6 strategic goals
@@ -50,7 +50,7 @@ Transformed the MXP website into a comprehensive, generous showcase of the entir
 - Complete stack breakdown (Protocol, Runtime, Control Plane)
 - Reliability & Operations features
 - Security & Governance details
-- Deployment options (Developer Loop, Self-Managed, Relay Cloud)
+- Deployment options (Developer Loop, Self-Managed, MXP Nexus Cloud)
 - Based on `docs/platform.md`
 
 ### 7. **SDK Showcase Section** (`sdk-showcase.tsx`)
@@ -68,7 +68,7 @@ Transformed the MXP website into a comprehensive, generous showcase of the entir
 - Newsletter signup
 
 ### 9. **Updated Pricing Section** (`pricing.tsx`)
-- 3 tiers: Open Source (Free), Relay Cloud ($499/mo), Enterprise (Custom)
+- 3 tiers: Open Source (Free), MXP Nexus Cloud ($499/mo), Enterprise (Custom)
 - Premium add-ons (Dedicated Regions, Private Peering, Compliance, etc.)
 - Value proposition section
 - Based on `docs/monetization.md`
@@ -174,5 +174,5 @@ website/src/components/sections/
 
 ---
 
-**Result**: A world-class, comprehensive website that showcases the full power and potential of MXP + Relay to the world! 🚀
+**Result**: A world-class, comprehensive website that showcases the full power and potential of MXP + MXP Nexus to the world! 🚀
 

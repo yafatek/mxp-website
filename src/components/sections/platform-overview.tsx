@@ -126,7 +126,7 @@ const packagingTargets = [
     ]
   },
   {
-    target: 'Managed Relay Cloud',
+    target: 'Managed MXP Nexus Cloud',
     icon: CloudIcon,
     timeline: 'Q4 2026',
     description: 'Fully managed multi-tenant platform',
