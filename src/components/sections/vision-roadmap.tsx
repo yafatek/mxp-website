@@ -53,7 +53,7 @@ const milestones = [
     timeline: 'Q2 2026',
     deliverables: [
       'TypeScript codec with zero-copy buffers',
-      'Node UDP + WebTransport support',
+      'Node UDP + WebRTC gateway support',
       'API parity with Rust runtime',
       'Browser-to-agent example apps'
     ],

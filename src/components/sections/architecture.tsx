@@ -13,7 +13,7 @@ const architectureLayers = [
     description: 'React dashboards, CLI tools, and automation scripts connect via MXP',
     icon: GlobeAltIcon,
     gradient: 'from-indigo-500 to-purple-500',
-    details: ['HTTP/SSE for browsers', 'Direct UDP for trusted networks', 'WebTransport gateway support']
+    details: ['WebRTC gateway for browsers', 'Direct UDP for trusted networks', 'WebSocket fallback for restricted environments']
   },
   {
     title: 'MXP Nexus Control Plane',

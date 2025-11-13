@@ -22,7 +22,7 @@ export const faqItems: FAQItem[] = [
     answer: 'Start with the Rust SDK in minutes and layer in JavaScript or Python as they reach beta. MXP Nexus ships language-specific quick starts, message builders, and fully typed APIs so teams can attach MXP to existing microservices, data pipelines, or agent workflows without rewriting business logic.',
     bullets: [
       'Drop-in Rust SDK with async/await patterns and tracing included',
-      'JavaScript SDK (beta) adds WebTransport + Node UDP for hybrid deployments',
+      'JavaScript SDK (beta) adds WebRTC DataChannel + Node UDP for hybrid deployments',
       'Python bindings planned for FastAPI, Django, and notebook orchestration'
     ]
   },
